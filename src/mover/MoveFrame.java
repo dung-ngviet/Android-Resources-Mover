@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package mover;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -95,7 +95,6 @@ public class MoveFrame extends javax.swing.JFrame {
     listDesMedia = new javax.swing.JList<>();
     btnDesRename = new javax.swing.JButton();
     btnDesDelete = new javax.swing.JButton();
-    jLabel8 = new javax.swing.JLabel();
     lblDesPreview = new javax.swing.JLabel();
     jScrollPane4 = new javax.swing.JScrollPane();
     txtDesName = new javax.swing.JTextArea();
@@ -109,7 +108,6 @@ public class MoveFrame extends javax.swing.JFrame {
     listSrcMedia = new javax.swing.JList<>();
     btnSrcMove = new javax.swing.JButton();
     btnSrcDelete = new javax.swing.JButton();
-    jLabel7 = new javax.swing.JLabel();
     lblSrcPreview = new javax.swing.JLabel();
     jScrollPane3 = new javax.swing.JScrollPane();
     txtSrcName = new javax.swing.JTextArea();
@@ -123,7 +121,7 @@ public class MoveFrame extends javax.swing.JFrame {
 
     jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "To", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-    jLabel3.setText("Source folder");
+    jLabel3.setText("Destination folder");
 
     btnDesBrowse.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
     btnDesBrowse.setText("Browse");
@@ -139,10 +137,18 @@ public class MoveFrame extends javax.swing.JFrame {
 
     btnDesRename.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     btnDesRename.setText("Rename");
+    btnDesRename.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDesRenameActionPerformed(evt);
+      }
+    });
 
     btnDesDelete.setText("Delete");
-
-    jLabel8.setText("Preview");
+    btnDesDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDesDeleteActionPerformed(evt);
+      }
+    });
 
     lblDesPreview.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -162,40 +168,33 @@ public class MoveFrame extends javax.swing.JFrame {
             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
               .add(jLabel4)
               .add(jLabel3))
-            .add(18, 18, 18)
+            .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
               .add(jPanel2Layout.createSequentialGroup()
                 .add(btnDesBrowse)
-                .add(0, 0, Short.MAX_VALUE))
-              .add(txtDesFolder))
-            .addContainerGap())
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 217, Short.MAX_VALUE))
+              .add(txtDesFolder)))
           .add(jPanel2Layout.createSequentialGroup()
             .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
               .add(jPanel2Layout.createSequentialGroup()
-                .add(19, 19, 19)
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                  .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .add(lblDesPreview, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(22, 22, 22))
-                  .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .add(jLabel8)
-                    .add(78, 78, 78))
-                  .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .add(btnDesDelete)
-                    .add(64, 64, 64)))
-                .add(0, 0, Short.MAX_VALUE))
-              .add(jPanel2Layout.createSequentialGroup()
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                  .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                  .add(txtDesTail)))
+              .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                   .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                     .add(btnDesRename, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(42, 42, 42))
+                    .add(39, 39, 39))
                   .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                      .add(txtDesTail)
-                      .add(jScrollPane4))
-                    .addContainerGap())))))))
+                    .add(btnDesDelete)
+                    .add(57, 57, 57))
+                  .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .add(lblDesPreview, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(20, 20, 20)))))))
+        .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -216,11 +215,9 @@ public class MoveFrame extends javax.swing.JFrame {
             .add(txtDesTail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
             .add(btnDesRename)
-            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(50, 50, 50)
             .add(btnDesDelete)
-            .add(62, 62, 62)
-            .add(jLabel8)
-            .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(lblDesPreview, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
           .add(jScrollPane2))
         .addContainerGap())
@@ -243,7 +240,7 @@ public class MoveFrame extends javax.swing.JFrame {
     jScrollPane1.setViewportView(listSrcMedia);
 
     btnSrcMove.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    btnSrcMove.setText("Move");
+    btnSrcMove.setText("Copy");
     btnSrcMove.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnSrcMoveActionPerformed(evt);
@@ -251,8 +248,11 @@ public class MoveFrame extends javax.swing.JFrame {
     });
 
     btnSrcDelete.setText("Delete");
-
-    jLabel7.setText("Preview");
+    btnSrcDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSrcDeleteActionPerformed(evt);
+      }
+    });
 
     lblSrcPreview.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
     lblSrcPreview.setIconTextGap(0);
@@ -290,17 +290,14 @@ public class MoveFrame extends javax.swing.JFrame {
               .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                   .add(jPanel3Layout.createSequentialGroup()
-                    .add(81, 81, 81)
-                    .add(jLabel7))
-                  .add(jPanel3Layout.createSequentialGroup()
                     .add(27, 27, 27)
                     .add(lblSrcPreview, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                   .add(jPanel3Layout.createSequentialGroup()
-                    .add(64, 64, 64)
-                    .add(btnSrcDelete))
-                  .add(jPanel3Layout.createSequentialGroup()
                     .add(49, 49, 49)
-                    .add(btnSrcMove, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(btnSrcMove, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                  .add(jPanel3Layout.createSequentialGroup()
+                    .add(64, 64, 64)
+                    .add(btnSrcDelete)))
                 .add(784, 784, 784))))))
     );
     jPanel3Layout.setVerticalGroup(
@@ -322,11 +319,9 @@ public class MoveFrame extends javax.swing.JFrame {
             .add(txtSrcTail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
             .add(btnSrcMove)
-            .add(36, 36, 36)
+            .add(53, 53, 53)
             .add(btnSrcDelete)
-            .add(62, 62, 62)
-            .add(jLabel7)
-            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
+            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 70, Short.MAX_VALUE)
             .add(lblSrcPreview, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
           .add(jScrollPane1))
         .addContainerGap())
@@ -340,19 +335,19 @@ public class MoveFrame extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-      .add(layout.createSequentialGroup()
-        .add(12, 12, 12)
-        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-          .add(jScrollPane6)
-          .add(layout.createSequentialGroup()
-            .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 384, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-            .add(18, 18, 18)
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        .addContainerGap())
       .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
         .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .add(jLabel5)
         .add(385, 385, 385))
+      .add(layout.createSequentialGroup()
+        .add(12, 12, 12)
+        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+          .add(jScrollPane6)
+          .add(layout.createSequentialGroup()
+            .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 384, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(18, 18, 18)
+            .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -364,7 +359,8 @@ public class MoveFrame extends javax.swing.JFrame {
         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
         .add(jLabel5)
         .add(4, 4, 4)
-        .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+        .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+        .addContainerGap())
     );
 
     jPanel2.getAccessibleContext().setAccessibleName("Destination Folder");
@@ -412,18 +408,18 @@ public class MoveFrame extends javax.swing.JFrame {
       File desResourceDensity = new File(desFolder + FOLDER_SEPARATOR + resouceDensityPath);
       
       if (!srcResourceFile.exists()) {
-        logError(srcFolder + "/" + resouceDensityPath + " doesn't exsists!" + System.lineSeparator());
+        logError(srcFolder + "/" + resouceDensityPath + " doesn't exsists!");
         continue;
       }
       
       if (!desResourceDensity.exists()) {
-        logError(desFolder + "/" + resouceDensityPath + " doesn't exsists!" + System.lineSeparator());
+        logError(desFolder + "/" + resouceDensityPath + " doesn't exsists!");
         desResourceDensity.mkdir();
       }
       
       try {
         Files.copy(srcResourceFile.toPath(), (new File(desResourceDensity.getAbsolutePath() + FOLDER_SEPARATOR + desName)).toPath(), StandardCopyOption.REPLACE_EXISTING);
-        logOk("Copied from " + resouceDensityPath + FOLDER_SEPARATOR + srcName + " to " + resouceDensityPath + FOLDER_SEPARATOR + desName + System.lineSeparator());
+        logOk("Copied from " + resouceDensityPath + FOLDER_SEPARATOR + srcName + " to " + resouceDensityPath + FOLDER_SEPARATOR + desName);
         successs = true;
       } catch (IOException ex) {
         Logger.getLogger(MoveFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -435,6 +431,7 @@ public class MoveFrame extends javax.swing.JFrame {
       desFiles.add(desFolder + FOLDER_SEPARATOR + RESOURCE.DRAWABLE.getType() + RESOURCE_DENSITY_SEPARATOR + DENSITY.XXXHDPI.getDensity() + FOLDER_SEPARATOR + desName);
       srcFiles.remove(listSrcMedia.getSelectedIndex());
       srcModel.remove(listSrcMedia.getSelectedIndex());
+      resetNameSrc();
     }
       
   }//GEN-LAST:event_btnSrcMoveActionPerformed
@@ -473,6 +470,110 @@ public class MoveFrame extends javax.swing.JFrame {
   private void btnDesBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesBrowseActionPerformed
     selectDesFolder();
   }//GEN-LAST:event_btnDesBrowseActionPerformed
+
+  private void btnSrcDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSrcDeleteActionPerformed
+    int selectedPosition = listSrcMedia.getSelectedIndex();
+    
+    if (selectedPosition < 0 || selectedPosition > srcFiles.size() - 1) {
+      JOptionPane.showMessageDialog(this, "Select a resource to delete!", "Error", JOptionPane.OK_OPTION);
+    } else {
+      String[] densityFolders = getFoldersResourceForDensities();
+      String nameToDelete = listSrcMedia.getSelectedValue();
+      boolean success = false;
+      
+      for (String densityFold: densityFolders) {
+        String resourcePath = srcFolder + FOLDER_SEPARATOR + densityFold + FOLDER_SEPARATOR + nameToDelete;
+        File resourceFile = new File(resourcePath);
+        if (resourceFile.exists()) {
+          resourceFile.delete();
+          success = true;
+          logOk("Delete successful: " + densityFold + FOLDER_SEPARATOR + nameToDelete );
+        }
+      }
+      
+      if (success) {
+        srcFiles.remove(selectedPosition);
+        srcModel.remove(selectedPosition);
+        resetNameSrc();
+      }
+    }
+  }//GEN-LAST:event_btnSrcDeleteActionPerformed
+
+  private void btnDesRenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesRenameActionPerformed
+    int selectedIndex = listDesMedia.getSelectedIndex();
+    
+    if (desFolder == null || desFolder.isEmpty()) {
+      JOptionPane.showMessageDialog(this, "Destination folder must be specified!", "Error", JOptionPane.OK_OPTION);
+      return;
+    }
+    
+    if (selectedIndex < 0) {
+      JOptionPane.showMessageDialog(this, "You must select a resource to rename!", "Error", JOptionPane.OK_OPTION);
+      return;
+    }
+    
+    String newName = txtDesName.getText().trim() + DOT + txtDesTail.getText().trim();
+    
+    if (newName == null | newName.isEmpty()) {
+      JOptionPane.showMessageDialog(this, "Name must not be empty!", "Error", JOptionPane.OK_OPTION);
+      return;
+    }
+    
+    String selectName = listDesMedia.getSelectedValue();
+    if (selectName == null ? false : selectName.equals(newName)) {
+      JOptionPane.showMessageDialog(this, "Name is not changed!", "Error", JOptionPane.OK_OPTION);
+      return;
+    }
+    String[] densityFolders = getFoldersResourceForDensities();     
+    
+    boolean successs = false;
+    
+    for (String resouceDensityPath : densityFolders) {
+      File resourceFile = new File(desFolder + FOLDER_SEPARATOR + resouceDensityPath + FOLDER_SEPARATOR + selectName);
+      File newFile = new File(desFolder + FOLDER_SEPARATOR + resouceDensityPath + FOLDER_SEPARATOR + newName);
+      
+      if (resourceFile.exists()) {
+        if (resourceFile.renameTo(newFile)) {
+          logOk("Rename " + resouceDensityPath + FOLDER_SEPARATOR + selectName + " to " + resouceDensityPath + FOLDER_SEPARATOR + newName);
+          successs = true;
+        }
+      }
+    }
+    
+    if (successs) {
+      desModel.set(selectedIndex, newName);
+      desFiles.set(selectedIndex, desFiles.get(selectedIndex).replace(selectName, newName));
+      resetNameSrc();
+    }
+  }//GEN-LAST:event_btnDesRenameActionPerformed
+
+  private void btnDesDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesDeleteActionPerformed
+    int selectedPosition = listDesMedia.getSelectedIndex();
+    
+    if (selectedPosition < 0 || selectedPosition > desFiles.size() - 1) {
+      JOptionPane.showMessageDialog(this, "Select a resource to delete!", "Error", JOptionPane.OK_OPTION);
+    } else {
+      String[] densityFolders = getFoldersResourceForDensities();
+      String nameToDelete = listDesMedia.getSelectedValue();
+      boolean success = false;
+      
+      for (String densityFold: densityFolders) {
+        String resourcePath = desFolder + FOLDER_SEPARATOR + densityFold + FOLDER_SEPARATOR + nameToDelete;
+        File resourceFile = new File(resourcePath);
+        if (resourceFile.exists()) {
+          resourceFile.delete();
+          success = true;
+          logOk("Delete successful: " + densityFold + FOLDER_SEPARATOR + nameToDelete );
+        }
+      }
+      
+      if (success) {
+        desFiles.remove(selectedPosition);
+        desModel.remove(selectedPosition);
+        resetNameDes();
+      }
+    }
+  }//GEN-LAST:event_btnDesDeleteActionPerformed
 
   private void selectDesFolder() {
    JFileChooser chooser = new JFileChooser(new File("C:\\Users\\DungX\\Desktop\\Printer\\android"));
@@ -607,16 +708,17 @@ public class MoveFrame extends javax.swing.JFrame {
   
   
   private void logError(String content) {
-    appendToPane(content, Color.RED);
+    appendToPane(content + System.lineSeparator(), Color.RED);
   }
   
   private void logWarning(String content) {
-    appendToPane(content, Color.YELLOW);
+    appendToPane(content + System.lineSeparator(), Color.YELLOW);
   }
    
   private void logOk(String content) {
-    appendToPane(content, Color.GREEN);
+    appendToPane(content + System.lineSeparator(), Color.GREEN);
   }
+  
   private void appendToPane(String msg, Color c) {
       StyleContext sc = StyleContext.getDefaultStyleContext();
       AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
@@ -628,6 +730,18 @@ public class MoveFrame extends javax.swing.JFrame {
       txtLogging.setCaretPosition(len);
       txtLogging.setCharacterAttributes(aset, false);
       txtLogging.replaceSelection(msg);
+  }
+  
+  private void resetNameSrc() {
+    txtSrcName.setText("");
+    txtSrcTail.setText("");
+    lblSrcPreview.setIcon(null);
+  }
+  
+  private void resetNameDes() {
+    txtDesName.setText("");
+    txtDesTail.setText("");
+    lblDesPreview.setIcon(null);
   }
   /**
    * @param args the command line arguments
@@ -676,8 +790,6 @@ public class MoveFrame extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
-  private javax.swing.JLabel jLabel7;
-  private javax.swing.JLabel jLabel8;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JScrollPane jScrollPane1;
