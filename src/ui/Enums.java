@@ -29,18 +29,28 @@ enum DENSITY {
   DENSITY(String density) {
     this.density = density;
   }
+
+  public String getDensity() {
+    return density;
+  }
+  
+  
 }
 
 enum RESOURCE {
-    DRAWABLE("drawable"),
-    LAYOUT("layout"),
-    MIPMAP("mipmap"),
-    VALUES("values"),
-    XML("xml");
-    
-    private final String type;
-    
-    RESOURCE(String type) {      
-      this.type = type;
-    }
+  DRAWABLE("drawable"),
+  LAYOUT("layout"),
+  MIPMAP("mipmap"),
+  VALUES("values"),
+  XML("xml");
+
+  private final String type;
+
+  RESOURCE(String type) {      
+    this.type = type;
+  }
+
+  public String getType() {
+    return type;
+  }
 }
